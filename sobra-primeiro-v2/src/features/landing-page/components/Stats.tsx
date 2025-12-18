@@ -13,11 +13,11 @@ export function Stats() {
           {stats.map((stat, index) => (
             <div key={index} className="group cursor-default">
               <div className="text-4xl font-extrabold md:text-5xl">
-                <span className="bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
+                <span className="bg-linear-to-br from-primary to-secondary bg-clip-text text-transparent">
                   {stat.value}
                 </span>
               </div>
-              <p className="mt-2 text-sm font-medium text-gray-500 group-hover:text-[var(--color-primary)] transition-colors">
+              <p className="mt-2 text-sm font-medium text-gray-500 group-hover:text-primary transition-colors">
                 {stat.label}
               </p>
             </div>

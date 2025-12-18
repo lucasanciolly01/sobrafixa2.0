@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; // Ícones
+import { Menu, X } from "lucide-react";
 import { cn } from "../../../lib/utils";
 
 const navLinks = [
@@ -22,7 +22,7 @@ export function Navbar() {
         
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] text-white font-bold text-xl shadow-lg transition-transform group-hover:scale-105">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary text-white font-bold text-xl shadow-lg transition-transform group-hover:scale-105">
             S
           </div>
           <span className="text-xl font-bold text-gray-900 tracking-tight">
@@ -36,7 +36,7 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-gray-600 hover:text-[var(--color-primary)] transition-colors"
+              className="text-sm font-medium text-gray-600 hover:text-primary transition-colors"
             >
               {link.name}
             </Link>
@@ -47,13 +47,13 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <Link 
             href="/login" 
-            className="text-sm font-semibold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]"
+            className="text-sm font-semibold text-primary hover:text-primary-dark"
           >
             Entrar
           </Link>
           <Link
             href="/register"
-            className="rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:opacity-90 transition-opacity"
+            className="rounded-lg bg-linear-to-r from-primary to-secondary px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:opacity-90 transition-opacity"
           >
             Começar Grátis
           </Link>
@@ -85,13 +85,13 @@ export function Navbar() {
             <hr className="my-2 border-gray-100" />
             <Link 
               href="/login"
-              className="w-full text-center py-3 text-[var(--color-primary)] font-bold"
+              className="w-full text-center py-3 text-primary font-bold"
             >
               Entrar
             </Link>
             <Link
               href="/register"
-              className="w-full text-center py-3 rounded-xl bg-[var(--color-primary)] text-white font-bold"
+              className="w-full text-center py-3 rounded-xl bg-primary text-white font-bold"
             >
               Criar Conta Gratuita
             </Link>

@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="home" className="relative w-full overflow-hidden bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] pt-20 pb-32 lg:pt-32 lg:pb-40">
+    <section id="home" className="relative w-full overflow-hidden bg-linear-to-br from-primary to-secondary pt-20 pb-32 lg:pt-32 lg:pb-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
@@ -21,7 +21,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/register"
-                className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-lg font-bold text-[var(--color-primary)] shadow-xl hover:bg-purple-50 transition-all active:scale-95"
+                className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-lg font-bold text-primary shadow-xl hover:bg-purple-50 transition-all active:scale-95"
               >
                 Começar Agora
               </Link>
@@ -51,10 +51,7 @@ export function Hero() {
 
           {/* Widget Visual (O Card do Dashboard) */}
           <div className="relative mt-12 lg:mt-0 hidden md:block perspective-1000">
-            {/* Efeito de vidro e rotação */}
             <div className="relative rounded-3xl bg-white p-8 shadow-2xl ring-1 ring-gray-900/10 rotate-3 transition-transform hover:rotate-0 duration-500 ease-out">
-              
-              {/* Cabeçalho do Card */}
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <p className="text-sm font-medium text-gray-500">Saldo Livre</p>
@@ -64,8 +61,6 @@ export function Hero() {
                   ✓ No ritmo
                 </span>
               </div>
-
-              {/* Barras de Progresso */}
               <div className="space-y-6">
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
@@ -76,7 +71,7 @@ export function Hero() {
                     <div className="h-2.5 w-full rounded-full bg-green-500" />
                   </div>
                 </div>
-
+                {/* ... outros progress bars ... */}
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="font-medium text-gray-700">Contas Fixas</span>
@@ -86,25 +81,12 @@ export function Hero() {
                     <div className="h-2.5 w-full rounded-full bg-blue-500" />
                   </div>
                 </div>
-
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="font-medium text-gray-700">Lazer & Variável</span>
-                    <span className="font-bold text-purple-600">R$ 340,00</span>
-                  </div>
-                  <div className="h-2.5 w-full rounded-full bg-purple-100">
-                    <div className="h-2.5 w-[45%] rounded-full bg-purple-500" />
-                  </div>
-                </div>
               </div>
-
-              {/* Texto de rodapé do card */}
               <p className="mt-6 text-xs text-center text-gray-400">
                 Atualizado em tempo real via Open Finance
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </section>

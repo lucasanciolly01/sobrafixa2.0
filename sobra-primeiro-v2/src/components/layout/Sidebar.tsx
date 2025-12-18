@@ -31,10 +31,10 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile Header (Só aparece em telas pequenas) */}
+      {/* Mobile Header */}
       <div className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200 sticky top-0 z-40">
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-primary)] text-white font-bold">S</div>
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white font-bold">S</div>
           <span className="font-bold text-gray-900">Sobra Primeiro</span>
         </div>
         <button onClick={() => setIsMobileOpen(!isMobileOpen)}>
@@ -49,9 +49,9 @@ export function Sidebar() {
       )}>
         <div className="flex flex-col h-full">
           
-          {/* Logo Area (Desktop) */}
+          {/* Logo Area */}
           <div className="hidden lg:flex items-center gap-3 p-6 border-b border-gray-100">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] text-white font-bold text-xl">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary text-white font-bold text-xl">
               S
             </div>
             <div>
@@ -60,9 +60,9 @@ export function Sidebar() {
             </div>
           </div>
 
-          {/* Saldo Rápido (Widget da Sidebar) */}
+          {/* Saldo Rápido */}
           <div className="p-4">
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-purple-100">
+            <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-purple-100">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-semibold text-gray-700">Saldo Livre</span>
                 <span className="text-xs text-green-600 font-bold bg-green-100 px-2 py-0.5 rounded-full">✓ No ritmo</span>
@@ -84,18 +84,18 @@ export function Sidebar() {
                   className={cn(
                     "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors",
                     isActive 
-                      ? "bg-purple-50 text-[var(--color-primary)] font-semibold" 
+                      ? "bg-purple-50 text-primary font-semibold" 
                       : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                   )}
                 >
-                  <item.icon size={20} className={isActive ? "text-[var(--color-primary)]" : "text-gray-400"} />
+                  <item.icon size={20} className={isActive ? "text-primary" : "text-gray-400"} />
                   {item.label}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Footer da Sidebar (User Profile) */}
+          {/* Footer */}
           <div className="p-4 border-t border-gray-100">
             <div className="flex items-center gap-3 mb-3">
               <div className="h-10 w-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">
@@ -114,7 +114,7 @@ export function Sidebar() {
         </div>
       </aside>
 
-      {/* Overlay para mobile */}
+      {/* Overlay */}
       {isMobileOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm"

@@ -26,17 +26,22 @@ export function Pricing() {
 
           {/* Premium */}
           <div className="relative rounded-3xl bg-gray-900 p-8 text-white shadow-2xl transform md:-translate-y-4">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+            {/* CORREÇÃO AQUI: bg-linear-to-r e cores diretas */}
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-linear-to-r from-primary to-secondary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
               Mais Popular
             </div>
             <h3 className="text-xl font-bold">Premium</h3>
             <div className="my-4"><span className="text-4xl font-bold">R$ 19,90</span>/mês</div>
             <ul className="space-y-3 mb-8 text-sm text-gray-300">
               {["Tudo do Gratuito", "Contas ilimitadas", "IA de categorização", "Metas ilimitadas"].map(item => (
-                <li key={item} className="flex gap-3"><Check className="text-[var(--color-secondary)] w-5 h-5"/> {item}</li>
+                <li key={item} className="flex gap-3">
+                  {/* CORREÇÃO AQUI: text-secondary */}
+                  <Check className="text-secondary w-5 h-5"/> {item}
+                </li>
               ))}
             </ul>
-            <Link href="/register" className="block w-full py-3 rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-center font-bold hover:opacity-90">
+            {/* CORREÇÃO AQUI: bg-linear-to-r */}
+            <Link href="/register" className="block w-full py-3 rounded-xl bg-linear-to-r from-primary to-secondary text-center font-bold hover:opacity-90">
               Testar Premium
             </Link>
           </div>

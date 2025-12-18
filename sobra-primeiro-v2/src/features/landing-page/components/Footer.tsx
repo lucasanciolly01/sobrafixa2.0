@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Twitter } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,8 @@ export function Footer() {
           {/* Coluna da Marca */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] text-white font-bold text-xl">
+              {/* CORREÇÃO AQUI: bg-linear-to-br e cores diretas */}
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-primary to-secondary text-white font-bold text-xl">
                 S
               </div>
               <span className="text-xl font-bold text-white">Sobra Primeiro</span>
@@ -23,7 +24,7 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Colunas de Links */}
+          {/* Links... (O restante do código permanece igual) */}
           <div>
             <h4 className="mb-4 font-bold text-white">Produto</h4>
             <ul className="space-y-3 text-sm">
