@@ -6,14 +6,14 @@
   --color-primary: #667eea;
   --color-primary-dark: #5a67d8;
   --color-secondary: #764ba2;
-  
+
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
 
   /* Fontes */
-  --font-sans: 'Inter', system-ui, sans-serif;
-  
+  --font-sans: "Inter", system-ui, sans-serif;
+
   /* Animações customizadas */
   --animate-fade-in: fadeIn 0.5s ease-out forwards;
 }
@@ -21,9 +21,13 @@
 /* Utilitários customizados */
 @layer utilities {
   .gradient-primary {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 100%
+    );
   }
-  
+
   .card-hover {
     transition: all 0.3s ease;
   }
@@ -34,6 +38,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

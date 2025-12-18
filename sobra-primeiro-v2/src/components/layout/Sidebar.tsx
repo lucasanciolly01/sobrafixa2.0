@@ -1,18 +1,18 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  Wallet, 
-  Target, 
-  PieChart, 
-  Landmark, 
-  Settings, 
+import {
+  Landmark,
+  LayoutDashboard,
   LogOut,
   Menu,
-  X
+  PieChart,
+  Settings,
+  Target,
+  Wallet,
+  X,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { cn } from "../../lib/utils";
 
@@ -34,28 +34,33 @@ export function Sidebar() {
       {/* Mobile Header */}
       <div className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200 sticky top-0 z-40">
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white font-bold">S</div>
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white font-bold">
+            S
+          </div>
           <span className="font-bold text-gray-900">Sobra Primeiro</span>
         </div>
-        <button onClick={() => setIsMobileOpen(!isMobileOpen)}>
+        <button type="button" onClick={() => setIsMobileOpen(!isMobileOpen)}>
           {isMobileOpen ? <X /> : <Menu />}
         </button>
       </div>
 
       {/* Sidebar Container */}
-      <aside className={cn(
-        "fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-screen",
-        isMobileOpen ? "translate-x-0" : "-translate-x-full"
-      )}>
+      <aside
+        className={cn(
+          "fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-screen",
+          isMobileOpen ? "translate-x-0" : "-translate-x-full",
+        )}
+      >
         <div className="flex flex-col h-full">
-          
           {/* Logo Area */}
           <div className="hidden lg:flex items-center gap-3 p-6 border-b border-gray-100">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary text-white font-bold text-xl">
               S
             </div>
             <div>
-              <h1 className="text-lg font-bold text-gray-900">Sobra Primeiro</h1>
+              <h1 className="text-lg font-bold text-gray-900">
+                Sobra Primeiro
+              </h1>
               <p className="text-xs text-gray-500">Painel do Usuário</p>
             </div>
           </div>
@@ -64,10 +69,16 @@ export function Sidebar() {
           <div className="p-4">
             <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-purple-100">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-semibold text-gray-700">Saldo Livre</span>
-                <span className="text-xs text-green-600 font-bold bg-green-100 px-2 py-0.5 rounded-full">✓ No ritmo</span>
+                <span className="text-sm font-semibold text-gray-700">
+                  Saldo Livre
+                </span>
+                <span className="text-xs text-green-600 font-bold bg-green-100 px-2 py-0.5 rounded-full">
+                  ✓ No ritmo
+                </span>
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">R$ 847,50</div>
+              <div className="text-2xl font-bold text-gray-900 mb-1">
+                R$ 847,50
+              </div>
               <p className="text-xs text-gray-500">Disponível para gastar</p>
             </div>
           </div>
@@ -83,12 +94,15 @@ export function Sidebar() {
                   onClick={() => setIsMobileOpen(false)}
                   className={cn(
                     "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors",
-                    isActive 
-                      ? "bg-purple-50 text-primary font-semibold" 
-                      : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    isActive
+                      ? "bg-purple-50 text-primary font-semibold"
+                      : "text-gray-700 hover:bg-gray-50 hover:text-gray-900",
                   )}
                 >
-                  <item.icon size={20} className={isActive ? "text-primary" : "text-gray-400"} />
+                  <item.icon
+                    size={20}
+                    className={isActive ? "text-primary" : "text-gray-400"}
+                  />
                   {item.label}
                 </Link>
               );
@@ -102,11 +116,18 @@ export function Sidebar() {
                 U
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-gray-900 truncate">Usuário Demo</p>
-                <p className="text-xs text-gray-500 truncate">usuario@email.com</p>
+                <p className="text-sm font-semibold text-gray-900 truncate">
+                  Usuário Demo
+                </p>
+                <p className="text-xs text-gray-500 truncate">
+                  usuario@email.com
+                </p>
               </div>
             </div>
-            <button className="flex items-center gap-2 w-full px-2 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+            <button
+              type="button"
+              className="flex items-center gap-2 w-full px-2 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+            >
               <LogOut size={16} />
               Sair
             </button>
@@ -116,9 +137,11 @@ export function Sidebar() {
 
       {/* Overlay */}
       {isMobileOpen && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm"
+        <button
+          type="button"
+          className="fixed inset-0 w-full h-full bg-black/50 z-40 lg:hidden backdrop-blur-sm cursor-default"
           onClick={() => setIsMobileOpen(false)}
+          aria-label="Fechar menu"
         />
       )}
     </>

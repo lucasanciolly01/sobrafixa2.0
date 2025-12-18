@@ -1,12 +1,14 @@
-import Link from "next/link";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
-    <section id="home" className="relative w-full overflow-hidden bg-linear-to-br from-primary to-secondary pt-20 pb-32 lg:pt-32 lg:pb-40">
+    <section
+      id="home"
+      className="relative w-full overflow-hidden bg-linear-to-br from-primary to-secondary pt-20 pb-32 lg:pt-32 lg:pb-40"
+    >
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
           {/* Texto e CTA */}
           <div className="max-w-2xl animate-fade-in">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl mb-6 leading-tight">
@@ -14,10 +16,10 @@ export function Hero() {
               <span className="text-purple-200">sem esforço</span>
             </h1>
             <p className="text-lg text-purple-100 mb-8 leading-relaxed max-w-lg">
-              O app que separa a sobra automaticamente antes de você gastar. 
+              O app que separa a sobra automaticamente antes de você gastar.
               Simples, inteligente e eficaz.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/register"
@@ -54,8 +56,12 @@ export function Hero() {
             <div className="relative rounded-3xl bg-white p-8 shadow-2xl ring-1 ring-gray-900/10 rotate-3 transition-transform hover:rotate-0 duration-500 ease-out">
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Saldo Livre</p>
-                  <h3 className="text-4xl font-bold text-gray-900 mt-1">R$ 847,50</h3>
+                  <p className="text-sm font-medium text-gray-500">
+                    Saldo Livre
+                  </p>
+                  <h3 className="text-4xl font-bold text-gray-900 mt-1">
+                    R$ 847,50
+                  </h3>
                 </div>
                 <span className="inline-flex items-center rounded-full bg-green-50 px-3 py-1 text-xs font-bold text-green-700 ring-1 ring-inset ring-green-600/20">
                   ✓ No ritmo
@@ -64,7 +70,9 @@ export function Hero() {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="font-medium text-gray-700">Sobra Garantida</span>
+                    <span className="font-medium text-gray-700">
+                      Sobra Garantida
+                    </span>
                     <span className="font-bold text-green-600">R$ 600,00</span>
                   </div>
                   <div className="h-2.5 w-full rounded-full bg-green-100">
@@ -74,7 +82,9 @@ export function Hero() {
                 {/* ... outros progress bars ... */}
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="font-medium text-gray-700">Contas Fixas</span>
+                    <span className="font-medium text-gray-700">
+                      Contas Fixas
+                    </span>
                     <span className="font-bold text-blue-600">R$ 1.200,00</span>
                   </div>
                   <div className="h-2.5 w-full rounded-full bg-blue-100">

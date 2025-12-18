@@ -1,22 +1,25 @@
-import { Target, Zap, BarChart3 } from "lucide-react";
+import { BarChart3, Target, Zap } from "lucide-react";
 
 export function Features() {
   const features = [
     {
       icon: Target,
       title: "Automático",
-      description: "O sistema separa a sobra assim que o dinheiro entra. Você não precisa fazer nada manualmente."
+      description:
+        "O sistema separa a sobra assim que o dinheiro entra. Você não precisa fazer nada manualmente.",
     },
     {
       icon: Zap,
       title: "Tempo Real",
-      description: "Saiba exatamente quanto pode gastar agora, antes de tomar a decisão errada de compra."
+      description:
+        "Saiba exatamente quanto pode gastar agora, antes de tomar a decisão errada de compra.",
     },
     {
       icon: BarChart3,
       title: "Inteligente",
-      description: "IA aprende seus padrões e categoriza gastos sozinha. Você só valida o que for necessário."
-    }
+      description:
+        "IA aprende seus padrões e categoriza gastos sozinha. Você só valida o que for necessário.",
+    },
   ];
 
   return (
@@ -27,18 +30,26 @@ export function Features() {
             Por que escolher o Sobra Primeiro?
           </h2>
           <p className="text-lg text-gray-600">
-            Chega de promessas. É hora de resultados reais com tecnologia de ponta.
+            Chega de promessas. É hora de resultados reais com tecnologia de
+            ponta.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, idx) => (
-            <div key={idx} className="card-hover bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          {features.map((feature) => (
+            <div
+              key={feature.title} // Correção: Usar título como key
+              className="card-hover bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+            >
               <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-purple-50 text-primary">
                 <feature.icon size={28} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>

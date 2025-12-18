@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { cn } from "../../../lib/utils";
+import Link from "next/link";
+import { useState } from "react";
 
 const navLinks = [
   { name: "Início", href: "#home" },
@@ -19,7 +18,6 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary text-white font-bold text-xl shadow-lg transition-transform group-hover:scale-105">
@@ -45,8 +43,8 @@ export function Navbar() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <Link 
-            href="/login" 
+          <Link
+            href="/login"
             className="text-sm font-semibold text-primary hover:text-primary-dark"
           >
             Entrar
@@ -61,6 +59,7 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
+          type="button"
           className="md:hidden text-gray-600"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -83,7 +82,7 @@ export function Navbar() {
               </Link>
             ))}
             <hr className="my-2 border-gray-100" />
-            <Link 
+            <Link
               href="/login"
               className="w-full text-center py-3 text-primary font-bold"
             >

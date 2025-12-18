@@ -10,8 +10,8 @@ export function Stats() {
     <section className="w-full border-y border-gray-100 bg-white py-16">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 text-center">
-          {stats.map((stat, index) => (
-            <div key={index} className="group cursor-default">
+          {stats.map((stat) => (
+            <div key={stat.label} className="group cursor-default">
               <div className="text-4xl font-extrabold md:text-5xl">
                 <span className="bg-linear-to-br from-primary to-secondary bg-clip-text text-transparent">
                   {stat.value}
