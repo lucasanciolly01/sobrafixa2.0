@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/lib/utils";
 import { Building2, CreditCard, Landmark, MoreHorizontal, Wallet } from "lucide-react";
 
 const accounts = [
@@ -37,7 +38,7 @@ export function AccountsList() {
               <div>
                 <p className="text-xs text-gray-400 mb-1">Saldo Atual</p>
                 <span className="text-2xl font-bold text-gray-900">
-                  {account.balance.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  {formatCurrency(account.balance)}
                 </span>
               </div>
               

@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/lib/utils";
 import { Car, Plane, ShieldCheck, Target, Trophy } from "lucide-react";
 
 // Dados simulados
@@ -33,10 +34,10 @@ export function GoalsList() {
               </h3>
               <div className="flex items-end gap-1 mt-1">
                 <span className="text-2xl font-bold text-gray-900">
-                  {goal.current.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  {formatCurrency(goal.current)}
                 </span>
                 <span className="text-sm text-gray-500 mb-1">
-                  de {goal.target.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  de {formatCurrency(goal.target)}
                 </span>
               </div>
             </div>
@@ -61,7 +62,6 @@ export function GoalsList() {
       })}
 
       {/* Card "Criar Nova Meta" */}
-      {/* Correção aplicada aqui: min-h-[200px] -> min-h-50 */}
       <button className="flex flex-col items-center justify-center h-full min-h-50 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50/50 hover:bg-gray-50 hover:border-purple-300 transition-all group">
         <div className="p-4 rounded-full bg-white shadow-sm mb-3 group-hover:scale-110 transition-transform">
           <Target className="w-6 h-6 text-purple-600" />

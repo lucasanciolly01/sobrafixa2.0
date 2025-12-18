@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/lib/utils";
 import { ArrowDownLeft, ArrowUpRight, Calendar, Filter, Search } from "lucide-react";
 
 // Dados simulados (depois virão do banco de dados)
@@ -71,7 +72,7 @@ export function TransactionsList() {
                 </td>
                 <td className={`px-6 py-4 text-right font-bold ${t.type === 'income' ? 'text-green-600' : 'text-gray-900'}`}>
                   {t.type === 'expense' ? '- ' : '+ '}
-                  {Math.abs(t.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  {formatCurrency(Math.abs(t.amount))}
                 </td>
               </tr>
             ))}

@@ -1,4 +1,5 @@
-import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { formatCurrency } from "@/lib/utils";
+import { AlertCircle } from "lucide-react";
 
 const categories = [
   { id: 1, name: "Moradia", spent: 1200, limit: 1200, color: "bg-purple-600", bg: "bg-purple-100" },
@@ -30,9 +31,9 @@ export function BudgetList() {
                 </div>
                 <div className="text-sm">
                   <span className="font-bold text-gray-900">
-                    {cat.spent.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                    {formatCurrency(cat.spent)}
                   </span>
-                  <span className="text-gray-400"> / {cat.limit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+                  <span className="text-gray-400"> / {formatCurrency(cat.limit)}</span>
                 </div>
               </div>
 
@@ -46,8 +47,8 @@ export function BudgetList() {
               
               <p className="text-xs text-gray-500 text-right">
                 {isOverLimit 
-                  ? `Ultrapassou ${Math.abs(cat.limit - cat.spent).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}` 
-                  : `Restam ${(cat.limit - cat.spent).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`
+                  ? `Ultrapassou ${formatCurrency(Math.abs(cat.limit - cat.spent))}` 
+                  : `Restam ${formatCurrency(cat.limit - cat.spent)}`
                 }
               </p>
             </div>
