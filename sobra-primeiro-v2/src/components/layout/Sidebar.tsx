@@ -1,146 +1,133 @@
 "use client";
 
 import {
-  Landmark,
+  BarChart3,
+  CreditCard,
   LayoutDashboard,
   LogOut,
   Menu,
   PieChart,
   Settings,
   Target,
+  User,
   Wallet,
   X,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { cn } from "../../lib/utils";
-
-const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
-  { icon: Wallet, label: "Transações", href: "/transacoes" },
-  { icon: Target, label: "Minhas Metas", href: "/metas" },
-  { icon: PieChart, label: "Orçamento", href: "/orcamento" },
-  { icon: Landmark, label: "Contas Bancárias", href: "/contas" },
-  { icon: Settings, label: "Configurações", href: "/configuracoes" },
-];
 
 export function Sidebar() {
   const pathname = usePathname();
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const menuItems = [
+    { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Transações", href: "/transacoes", icon: CreditCard },
+    { name: "Minhas Metas", href: "/metas", icon: Target },
+    { name: "Orçamento", href: "/orcamento", icon: PieChart },
+    { name: "Contas Bancárias", href: "/contas", icon: Wallet },
+    { name: "Configurações", href: "/configuracoes", icon: Settings },
+  ];
 
   return (
     <>
-      {/* Mobile Header */}
-      <div className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white font-bold">
-            S
-          </div>
-          <span className="font-bold text-gray-900">Sobra Primeiro</span>
+      {/* --- HEADER MOBILE (Apenas visível em telas pequenas) --- */}
+      <div className="md:hidden bg-white border-b border-gray-200 p-4 flex items-center justify-between sticky top-0 z-30">
+        <div className="flex items-center gap-2 text-purple-700 font-bold text-xl">
+          <BarChart3 className="w-6 h-6" />
+          <span>SobraPrimo</span>
         </div>
-        <button type="button" onClick={() => setIsMobileOpen(!isMobileOpen)}>
-          {isMobileOpen ? <X /> : <Menu />}
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
 
-      {/* Sidebar Container */}
+      {/* --- SIDEBAR (Menu Lateral) --- */}
       <aside
-        className={cn(
-          "fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-screen",
-          isMobileOpen ? "translate-x-0" : "-translate-x-full",
-        )}
+        className={`
+          fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-gray-200 
+          transform transition-transform duration-300 ease-in-out
+          md:translate-x-0 md:static md:h-screen md:flex md:flex-col
+          ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
       >
-        <div className="flex flex-col h-full">
-          {/* Logo Area */}
-          <div className="hidden lg:flex items-center gap-3 p-6 border-b border-gray-100">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary text-white font-bold text-xl">
-              S
+        {/* Logo (Visível apenas em Desktop dentro da Sidebar) */}
+        <div className="p-6 border-b border-gray-100 hidden md:block">
+          <h1 className="text-2xl font-bold text-purple-700 flex items-center gap-2">
+            <BarChart3 className="w-8 h-8" />
+            Sobra<span className="text-gray-900">Primo</span>
+          </h1>
+        </div>
+
+        {/* Links de Navegação */}
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto mt-4 md:mt-0">
+          {menuItems.map((item) => {
+            const isActive =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  isActive
+                    ? "bg-purple-50 text-purple-700 shadow-sm border border-purple-100"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                }`}
+              >
+                <item.icon
+                  className={`w-5 h-5 ${
+                    isActive ? "text-purple-600" : "text-gray-400"
+                  }`}
+                />
+                {item.name}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Rodapé da Sidebar (Perfil + Logout) */}
+        <div className="p-4 border-t border-gray-100 space-y-2">
+          <div className="flex items-center gap-3 px-4 py-2 mb-2 bg-gray-50 rounded-lg">
+            <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-700">
+              <User className="w-4 h-4" />
             </div>
-            <div>
-              <h1 className="text-lg font-bold text-gray-900">
-                Sobra Primeiro
-              </h1>
-              <p className="text-xs text-gray-500">Painel do Usuário</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-gray-900 truncate">
+                Utilizador
+              </p>
+              <p className="text-xs text-gray-500 truncate">plano gratuito</p>
             </div>
           </div>
 
-          {/* Saldo Rápido */}
-          <div className="p-4">
-            <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-purple-100">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-semibold text-gray-700">
-                  Saldo Livre
-                </span>
-                <span className="text-xs text-green-600 font-bold bg-green-100 px-2 py-0.5 rounded-full">
-                  ✓ No ritmo
-                </span>
-              </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">
-                R$ 847,50
-              </div>
-              <p className="text-xs text-gray-500">Disponível para gastar</p>
-            </div>
-          </div>
-
-          {/* Navegação */}
-          <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-            {menuItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMobileOpen(false)}
-                  className={cn(
-                    "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors",
-                    isActive
-                      ? "bg-purple-50 text-primary font-semibold"
-                      : "text-gray-700 hover:bg-gray-50 hover:text-gray-900",
-                  )}
-                >
-                  <item.icon
-                    size={20}
-                    className={isActive ? "text-primary" : "text-gray-400"}
-                  />
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Footer */}
-          <div className="p-4 border-t border-gray-100">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="h-10 w-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">
-                U
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-gray-900 truncate">
-                  Usuário Demo
-                </p>
-                <p className="text-xs text-gray-500 truncate">
-                  usuario@email.com
-                </p>
-              </div>
-            </div>
-            <button
-              type="button"
-              className="flex items-center gap-2 w-full px-2 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-            >
-              <LogOut size={16} />
-              Sair
-            </button>
-          </div>
+          <button
+            type="button"
+            className="flex items-center gap-3 px-4 py-2 w-full rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+          >
+            <LogOut className="w-5 h-5" />
+            Sair do Sistema
+          </button>
         </div>
       </aside>
 
-      {/* Overlay */}
-      {isMobileOpen && (
-        <button
-          type="button"
-          className="fixed inset-0 w-full h-full bg-black/50 z-40 lg:hidden backdrop-blur-sm cursor-default"
-          onClick={() => setIsMobileOpen(false)}
+      {/* --- OVERLAY PARA MOBILE --- */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 md:hidden glass"
+          onClick={() => setIsMobileMenuOpen(false)}
+          onKeyDown={(e) => e.key === "Escape" && setIsMobileMenuOpen(false)}
+          role="button"
+          tabIndex={0}
           aria-label="Fechar menu"
         />
       )}
